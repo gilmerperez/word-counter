@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: hsl(0, 0%, 90%);
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {}
+
+h1 {
+  font-size: 5rem;
+  margin-bottom: 30px;
+}
+
+#textArea {
+  padding: 15px;
+  min-width: 100%;
+  text-align: left;
+  font-size: 1.3rem;
+  min-height: 350px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.btnContainer {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnContainer button {
+  flex: auto;
+  color: white;
+  transition: 0.3s;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: hsl(210, 100%, 55%);
+}
+
+.btnContainer button:hover {
+  background-color: hsl(210, 100%, 65%);
+}
+
+.counterDisplayContainer {
+  gap: 10px;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.counterDisplayContainer p {
+  flex: auto;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: white;
+}

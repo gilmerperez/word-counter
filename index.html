@@ -4,13 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
   <title>Word Counter</title>
 </head>
 
 <body>
-<script src="script.js"></script>
+  <div class="container">
+    <h1>WORD COUNTER</h1>
+
+    <textarea id="textArea" placeholder="Start typing, or copy and paste here..."></textarea>
+
+    <div class="btnContainer">
+      <button id="clear">Clear</button>
+      <button id="convertToLowerCase">Convert to Lowercase</button>
+      <button id="convertToTitleCase">Convert to Title Case</button>
+      <button id="convertToUpperCase">Convert to Uppercase</button>
+      <button id="undo">Undo</button>
+      <button id="redo">Redo</button>
+    </div>
+
+    <div class="counterDisplayContainer">
+      <p><span id="CharacterCount">0</span> Characters</p>
+      <p><span id="wordCount">0</span> Words</p>
+      <p><span id="lineCount">0</span> Lines</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
