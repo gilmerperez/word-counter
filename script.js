@@ -10,18 +10,24 @@ const undoBtn = document.getElementById("undoBtn");
 const redoBtn = document.getElementById("redoBtn");
 
 // Count Displays
-const characterCount = document.getElementById("characterCount");
-const wordCount = document.getElementById("wordCount");
-const lineCount = document.getElementById("lineCount");
+const characterCountDisplay = document.getElementById("characterCount");
+const wordCountDisplay = document.getElementById("wordCount");
+const lineCountDisplay = document.getElementById("lineCount");
 
 // Functions
-function clear() {}
+function clear() {
+  textarea.value = "";
+}
 
-function lowercase() {}
+function lowercase() {
+  textarea.value = textarea.value.toLowerCase();
+}
 
 function titlecase() {}
 
-function uppercase() {}
+function uppercase() {
+  textarea.value = textarea.value.toUpperCase();
+}
 
 function undo() {}
 
