@@ -68,23 +68,20 @@ function wordCount() {
 }
 
 // Count all lines
-function lineCount() {}
+function lineCount() {
+  const lineCount = textarea.value.split("\n").length;
+  lineCountDisplay.textContent = lineCount;
+}
 
 // * Event Listeners
+// Functional Buttons
 clearBtn.addEventListener("click", clear);
-
 lowercaseBtn.addEventListener("click", lowercase);
-
 titlecaseBtn.addEventListener("click", titlecase);
-
 uppercaseBtn.addEventListener("click", uppercase);
-
 undoBtn.addEventListener("click", undo);
-
 redoBtn.addEventListener("click", redo);
-
-document.addEventListener("keypress", characterCount);
-
+// Count Displays
+text.addEventListener("keypress", characterCount);
 document.addEventListener("keypress", wordCount);
-
 document.addEventListener("keypress", lineCount);
