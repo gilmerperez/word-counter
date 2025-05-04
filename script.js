@@ -23,7 +23,19 @@ function lowercase() {
   textarea.value = textarea.value.toLowerCase();
 }
 
-function titlecase() {}
+function titlecase() {
+  // Lowercase everything in the textarea
+  const lowercase = textarea.value.toLowerCase();
+
+  // Seperate the content into an array of words
+  const words = lowercase.split(" ");
+
+  // Loop over each word and uppercase the first character
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    textarea.value = words.join(" ");
+  }
+}
 
 function uppercase() {
   textarea.value = textarea.value.toUpperCase();
