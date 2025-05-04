@@ -82,6 +82,8 @@ uppercaseBtn.addEventListener("click", uppercase);
 undoBtn.addEventListener("click", undo);
 redoBtn.addEventListener("click", redo);
 // Count Displays
-text.addEventListener("keypress", characterCount);
-document.addEventListener("keypress", wordCount);
-document.addEventListener("keypress", lineCount);
+textarea.addEventListener("input", () => {
+  characterCount();
+  wordCount();
+  lineCount();
+});
