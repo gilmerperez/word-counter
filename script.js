@@ -44,25 +44,90 @@ function uppercase() {
   textArea.value = textArea.value.toUpperCase();
 }
 
-// Title case everything
+// Title case capitalizes the first letter of every major word in the title
 function titleCase() {
-  // Lowercase everything in the textArea
-  const lowercase = textArea.value.toLowerCase();
+  // Define a list of small words that should not be capitalized unless they are at the start or end of the title
+  const smallWords = [
+    "a",
+    "an",
+    "and",
+    "but",
+    "for",
+    "nor",
+    "or",
+    "so",
+    "the",
+    "to",
+    "in",
+    "on",
+    "at",
+    "by",
+    "as",
+    "up",
+    "of",
+    "from",
+  ];
 
-  // Seperate the content into an array of words
+  // Lowercase everything in the textArea
+  const lowercase = textArea.value.toLowerCase().trim();
+
+  // Separate the content into an array of words
   const words = lowercase.split(" ");
 
-  // Loop over each word and uppercase the first character
-  // Then add all of the rest of the letters after
+  // Loop over each word and uppercase the first character, unless it's a small word
   for (let i = 0; i < words.length; i++) {
-    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-    textArea.value = words.join(" ");
+    // Check if the word is not in the smallWords list and if it's the first or last word in the title
+    if (i === 0 || i === words.length - 1 || !smallWords.includes(words[i])) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
   }
+
+  // Join the words back together and set the value of the text area
+  textArea.value = words.join(" ");
 }
 
-function sentenceCase() {}
+// Sentence case only capitalizes the first word in every sentence
+function sentenceCase() {
+  // Lowercase the entire text area first and trim leading/trailing spaces
+  const text = textArea.value.toLowerCase().trim();
 
-function capitalizedCase() {}
+  // Split the text into parts: sentences and their punctuation (preserved separately)
+  const parts = text.split(/([.!?])\s*/).filter(Boolean);
+
+  // Rebuild the sentences with proper capitalization and spacing
+  let result = "";
+  for (let i = 0; i < parts.length; i += 2) {
+    const sentence = parts[i].trim();
+    const punctuation = parts[i + 1] || "";
+
+    if (sentence.length > 0) {
+      const capitalized = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+      result += capitalized + punctuation + " ";
+    }
+  }
+
+  // Trim any final extra space and update the textarea
+  textArea.value = result.trim();
+}
+
+// Capitalized case capitalizes every word, even minor words
+function capitalizedCase() {
+  // Trim and lowercase the entire text
+  const lowercase = textArea.value.toLowerCase().trim();
+
+  // Split into words by one or more spaces (to avoid empty elements)
+  const words = lowercase.split(/\s+/);
+
+  // Capitalize every word
+  for (let i = 0; i < words.length; i++) {
+    if (words[i]) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+  }
+
+  // Join and assign to the textarea, ensuring no trailing space
+  textArea.value = words.join(" ");
+}
 
 function inverseCase() {}
 
