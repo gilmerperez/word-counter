@@ -100,9 +100,35 @@ function redo() {
   }
 }
 
-function copy() {}
+function copy() {
+  // If there is content in text area
+  if (textArea.value) {
+    // Copy it to the clipboard
+    navigator.clipboard.writeText(textArea.value);
+    // Handle dynamic HTML
+    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+    setTimeout(() => {
+      copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+    }, 1500);
+  }
+}
 
-function paste() {}
+async function paste() {
+  try {
+    const clipboardText = await navigator.clipboard.readText();
+    if (clipboardText) {
+      textArea.value = textArea.value + clipboardText;
+      // Handle dynamic HTML
+      pasteBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      setTimeout(() => {
+        pasteBtn.innerHTML = '<i class="fa-regular fa-paste"></i>';
+      }, 1500);
+    }
+  } catch (error) {
+    console.error("Failed to paste text:", error);
+    alert("Unable to access clipboard. Please allow clipboard permissions.");
+  }
+}
 
 // Count all characters
 function charCount() {
