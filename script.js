@@ -38,21 +38,11 @@ function clear() {
 // Lowercase everything
 function lowercase() {
   textArea.value = textArea.value.toLowerCase().trim();
-  // Display counts
-  charCount();
-  wordCount();
-  sentenceCount();
-  lineCount();
 }
 
 // Uppercase everything
 function uppercase() {
   textArea.value = textArea.value.toUpperCase().trim();
-  // Display counts
-  charCount();
-  wordCount();
-  sentenceCount();
-  lineCount();
 }
 
 // Title case capitalizes the first letter of every major word, unless they are minor words at the start or end
@@ -89,13 +79,8 @@ function titleCase() {
       words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
     }
   }
-  // Join the words back together and update the text area
-  textArea.value = words.join(" ");
-  // Display counts
-  charCount();
-  wordCount();
-  sentenceCount();
-  lineCount();
+  // Join the words back together and trim any whitespace
+  textArea.value = words.join(" ").trim();
 }
 
 // Sentence case only capitalizes the first word in every sentence
@@ -114,13 +99,8 @@ function sentenceCase() {
       result = result + capitalized + punctuation + " ";
     }
   }
-  // Trim any final extra space and update the textarea
+  // Trim any whitespace and update the text area
   textArea.value = result.trim();
-  // Display counts
-  charCount();
-  wordCount();
-  sentenceCount();
-  lineCount();
 }
 
 // Capitalized case capitalizes every word, no exceptions
@@ -135,18 +115,53 @@ function capitalizedCase() {
       words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
     }
   }
-  // Join the words back together and update the text area
-  textArea.value = words.join(" ");
-  // Display counts
-  charCount();
-  wordCount();
-  sentenceCount();
-  lineCount();
+  // Join the words back together and trim any whitespace
+  textArea.value = words.join(" ").trim();
 }
 
-function inverseCase() {}
+// Inverse case flips the case of each letter
+function inverseCase() {
+  let output = "";
+  // Get each character
+  for (let i = 0; i < textArea.value.length; i++) {
+    const char = textArea.value[i];
+    // If character is lowercase, convert to uppercase
+    if (char === char.toLowerCase() && char !== char.toUpperCase()) {
+      output += char.toUpperCase();
+      // If character is uppercase, convert to lowercase
+    } else if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+      output += char.toLowerCase();
+      // If character is a symbol, leave it
+    } else {
+      output = output + char;
+    }
+  }
+  // Trim any whitespace and update the text area
+  textArea.value = output.trim();
+}
 
-function alternatingCase() {}
+// Alternating case switches between lowercase and uppercase every other letter
+function alternatingCase() {
+  let output = "";
+  let shouldUppercase = false;
+  // Get each character
+  for (let i = 0; i < textArea.value.length; i++) {
+    const char = textArea.value[i];
+    // Check if the character is a letter
+    if (char.toLowerCase() !== char.toUpperCase()) {
+      if (shouldUppercase) {
+        output = output + char.toUpperCase();
+      } else {
+        output = output + char.toLowerCase();
+      }
+      shouldUppercase = !shouldUppercase; // Flip the flag
+    } else {
+      output = output + char; // Preserve symbols and whitespace
+    }
+  }
+  // Trim any whitespace and update the text area
+  textArea.value = output.trim();
+}
 
 // Undo last change
 function undo() {
