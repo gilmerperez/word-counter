@@ -70,7 +70,7 @@ h1 {
   content: " Clear";
 }
 #clearBtn:hover i {
-  animation: fa-shake 1.5s infinite;
+  animation: fa-shake 2s infinite;
 }
 /* Undo Button Hover Effect */
 #undoBtn:hover::after {
