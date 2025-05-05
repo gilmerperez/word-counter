@@ -127,7 +127,7 @@ function sentenceCase() {
 function capitalizedCase() {
   // Lowercase everything and trim whitespace
   const lowercase = textArea.value.toLowerCase().trim();
-  // Split  words by one or more spaces
+  // Split words by one or more spaces
   const words = lowercase.split(/\s+/);
   // Capitalize every word
   for (let i = 0; i < words.length; i++) {
@@ -223,7 +223,14 @@ function wordCount() {
 }
 
 // Count all sentences
-function sentenceCount() {}
+function sentenceCount() {
+  const sentences = textArea.value.match(/[^.!?]+[.!?]+(\s|$)/g);
+  if (sentences) {
+    sentenceCountDisplay.textContent = sentences.length;
+  } else {
+    sentenceCountDisplay.textContent = 0;
+  }
+}
 
 // Count all lines
 function lineCount() {
