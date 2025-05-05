@@ -4,7 +4,7 @@ const textarea = document.getElementById("textarea");
 // Functional Buttons
 const clearBtn = document.getElementById("clearBtn");
 const lowercaseBtn = document.getElementById("lowercaseBtn");
-const titlecaseBtn = document.getElementById("titlecaseBtn");
+const titleCaseBtn = document.getElementById("titlecaseBtn");
 const uppercaseBtn = document.getElementById("uppercaseBtn");
 const undoBtn = document.getElementById("undoBtn");
 const redoBtn = document.getElementById("redoBtn");
@@ -104,7 +104,7 @@ function lineCount() {
 // Functional Buttons
 clearBtn.addEventListener("click", clear);
 lowercaseBtn.addEventListener("click", lowercase);
-titlecaseBtn.addEventListener("click", titlecase);
+titleCaseBtn.addEventListener("click", titlecase);
 uppercaseBtn.addEventListener("click", uppercase);
 undoBtn.addEventListener("click", undo);
 redoBtn.addEventListener("click", redo);

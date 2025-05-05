@@ -7,32 +7,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
   <title>Word Counter</title>
 </head>
 
 <body>
-  <div class="container">
+  <main>
+    <!-- Title -->
     <h1>WORD COUNTER</h1>
-
+    <!-- Text Area -->
     <textarea id="textarea" placeholder="Start typing, or copy and paste here..."></textarea>
-
+    <!-- Functional Buttons -->
     <div class="btnContainer">
       <button id="clearBtn">Clear</button>
-      <button id="lowercaseBtn">Convert to Lowercase</button>
-      <button id="titlecaseBtn">Convert to Title Case</button>
-      <button id="uppercaseBtn">Convert to Uppercase</button>
+      <button id="lowercaseBtn">Lowercase</button>
+      <button id="uppercaseBtn">Uppercase</button>
+      <button id="titleCaseBtn">Title Case</button>
+      <button id="sentenceCaseBtn">Sentence Case</button>
+      <button id="capitalizedCaseBtn">Capitalized Case</button>
+      <button id="inverseCaseBtn">Inverse Case</button>
+      <button id="alternatingCaseBtn">Alternating Case</button>
       <button id="undoBtn">Undo</button>
       <button id="redoBtn">Redo</button>
+      <button id="copyBtn"><i class="fa-regular fa-copy"></i></button>
+      <button><i class="fa-regular fa-paste"></i></button>
     </div>
-
+    <!-- Count Display -->
     <div class="counterDisplayContainer">
       <p><span id="charCountDisplay">0</span> Characters</p>
       <p><span id="wordCountDisplay">0</span> Words</p>
+      <p><span id="sentenceCountDisplay">0</span> Sentences</p>
       <p><span id="lineCountDisplay">0</span> Lines</p>
     </div>
-  </div>
+  </main>
+  <!-- JavaScript File -->
   <script src="script.js"></script>
 </body>
 
