@@ -60,6 +60,14 @@ function titleCase() {
   }
 }
 
+function sentenceCase() {}
+
+function capitalizedCase() {}
+
+function inverseCase() {}
+
+function alternatingCase() {}
+
 // Undo last change
 function undo() {
   if (undoStack.length > 0) {
@@ -69,8 +77,9 @@ function undo() {
     const previousVersion = undoStack.pop();
     textArea.value = previousVersion;
     // Display counts
-    characterCount();
+    charCount();
     wordCount();
+    sentenceCount();
     lineCount();
   }
 }
@@ -86,9 +95,14 @@ function redo() {
     // Display counts
     charCount();
     wordCount();
+    sentenceCount();
     lineCount();
   }
 }
+
+function copy() {}
+
+function paste() {}
 
 // Count all characters
 function charCount() {
@@ -102,6 +116,9 @@ function wordCount() {
   wordCountDisplay.textContent = wordCount;
 }
 
+// Count all sentences
+function sentenceCount() {}
+
 // Count all lines
 function lineCount() {
   const lineCount = textArea.value.split("\n").length;
@@ -111,10 +128,16 @@ function lineCount() {
 // Functional Buttons
 clearBtn.addEventListener("click", clear);
 lowercaseBtn.addEventListener("click", lowercase);
-titleCaseBtn.addEventListener("click", titleCase);
 uppercaseBtn.addEventListener("click", uppercase);
+titleCaseBtn.addEventListener("click", titleCase);
+sentenceCaseBtn.addEventListener("click", sentenceCase);
+capitalizedCaseBtn.addEventListener("click", capitalizedCase);
+inverseCaseBtn.addEventListener("click", inverseCase);
+alternatingCaseBtn.addEventListener("click", alternatingCase);
 undoBtn.addEventListener("click", undo);
 redoBtn.addEventListener("click", redo);
+copyBtn.addEventListener("click", copy);
+pasteBtn.addEventListener("click", paste);
 
 // Count Displays
 textArea.addEventListener("input", () => {
@@ -124,5 +147,6 @@ textArea.addEventListener("input", () => {
   redoStack = [];
   charCount();
   wordCount();
+  sentenceCount();
   lineCount();
 });
