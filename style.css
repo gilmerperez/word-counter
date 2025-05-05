@@ -1,5 +1,5 @@
 * {
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 body {
@@ -62,6 +62,42 @@ h1 {
 /* Functional Buttons Hover Effect */
 .btnContainer button:hover {
   background-color: hsl(210, 100%, 65%);
+}
+
+/* Clear Button Hover Effect */
+#clearBtn:hover::after {
+  content: "Clear";
+}
+#clearBtn:hover i {
+  display: none;
+}
+/* Undo Button Hover Effect */
+#undoBtn:hover::after {
+  content: "Undo";
+}
+#undoBtn:hover i {
+  display: none;
+}
+/* Redo Button Hover Effect */
+#redoBtn:hover::after {
+  content: "Redo";
+}
+#redoBtn:hover i {
+  display: none;
+}
+/* Copy Button Hover Effect */
+#copyBtn:hover::after {
+  content: "Copy";
+}
+#copyBtn:hover i {
+  display: none;
+}
+/* Paste Button Hover Effect */
+#pasteBtn:hover::after {
+  content: "Paste";
+}
+#pasteBtn:hover i {
+  display: none;
 }
 
 /* Counter Display Container */
