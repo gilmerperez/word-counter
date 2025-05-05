@@ -39,7 +39,7 @@ h1 {
 
 /* Functional Buttons Container */
 .btnContainer {
-  gap: 10px;
+  gap: 1rem;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -50,7 +50,7 @@ h1 {
 .btnContainer button {
   flex: auto;
   color: white;
-  transition: 0.3s;
+  transition: 0.3s ease;
   font-weight: 500;
   font-size: 1.25rem;
   padding: 10px 15px;
@@ -61,43 +61,52 @@ h1 {
 
 /* Functional Buttons Hover Effect */
 .btnContainer button:hover {
+  transform: scale(1.05);
   background-color: hsl(210, 100%, 65%);
 }
 
 /* Clear Button Hover Effect */
 #clearBtn:hover::after {
-  content: "Clear";
+  content: " Clear";
 }
 #clearBtn:hover i {
-  display: none;
+  animation: fa-shake 1s infinite;
 }
 /* Undo Button Hover Effect */
 #undoBtn:hover::after {
-  content: "Undo";
+  content: " Undo";
 }
 #undoBtn:hover i {
-  display: none;
+  animation: spin-reverse 1s infinite;
+}
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 /* Redo Button Hover Effect */
 #redoBtn:hover::after {
-  content: "Redo";
+  content: " Redo";
 }
 #redoBtn:hover i {
-  display: none;
+  animation: fa-spin 1.5s infinite;
 }
 /* Copy Button Hover Effect */
 #copyBtn:hover::after {
-  content: "Copy";
+  content: " Copy";
 }
 #copyBtn:hover i {
-  display: none;
+  animation: fa-beat 1.5s infinite;
 }
 /* Paste Button Hover Effect */
 #pasteBtn:hover::after {
-  content: "Paste";
+  content: " Paste";
 }
 #pasteBtn:hover i {
-  display: none;
+  animation: fa-beat 1.5s infinite;
 }
 
 /* Counter Display Container */
