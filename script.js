@@ -1,17 +1,24 @@
 // Text Area
-const textarea = document.getElementById("textarea");
+const textArea = document.getElementById("textArea");
 
 // Functional Buttons
 const clearBtn = document.getElementById("clearBtn");
 const lowercaseBtn = document.getElementById("lowercaseBtn");
-const titleCaseBtn = document.getElementById("titlecaseBtn");
 const uppercaseBtn = document.getElementById("uppercaseBtn");
+const titleCaseBtn = document.getElementById("titleCaseBtn");
+const sentenceCaseBtn = document.getElementById("sentenceCaseBtn");
+const capitalizedCaseBtn = document.getElementById("capitalizedCaseBtn");
+const inverseCaseBtn = document.getElementById("inverseCaseBtn");
+const alternatingCaseBtn = document.getElementById("alternatingCaseBtn");
 const undoBtn = document.getElementById("undoBtn");
 const redoBtn = document.getElementById("redoBtn");
+const copyBtn = document.getElementById("copyBtn");
+const pasteBtn = document.getElementById("pasteBtn");
 
 // Count Displays
 const charCountDisplay = document.getElementById("charCountDisplay");
 const wordCountDisplay = document.getElementById("wordCountDisplay");
+const sentenceCountDisplay = document.getElementById("sentenceCountDisplay");
 const lineCountDisplay = document.getElementById("lineCountDisplay");
 
 // Undo and Redo Stack
@@ -20,7 +27,7 @@ let redoStack = [];
 
 // Clear everything
 function clear() {
-  textarea.value = "";
+  textArea.value = "";
   // Clear all count Displays
   charCountDisplay.textContent = 0;
   wordCountDisplay.textContent = 0;
@@ -29,13 +36,18 @@ function clear() {
 
 // Lowercase everything
 function lowercase() {
-  textarea.value = textarea.value.toLowerCase();
+  textArea.value = textArea.value.toLowerCase();
+}
+
+// Uppercase everything
+function uppercase() {
+  textArea.value = textArea.value.toUpperCase();
 }
 
 // Title case everything
-function titlecase() {
-  // Lowercase everything in the textarea
-  const lowercase = textarea.value.toLowerCase();
+function titleCase() {
+  // Lowercase everything in the textArea
+  const lowercase = textArea.value.toLowerCase();
 
   // Seperate the content into an array of words
   const words = lowercase.split(" ");
@@ -44,23 +56,18 @@ function titlecase() {
   // Then add all of the rest of the letters after
   for (let i = 0; i < words.length; i++) {
     words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-    textarea.value = words.join(" ");
+    textArea.value = words.join(" ");
   }
-}
-
-// Uppercase everything
-function uppercase() {
-  textarea.value = textarea.value.toUpperCase();
 }
 
 // Undo last change
 function undo() {
   if (undoStack.length > 0) {
     // Save current version for redo
-    redoStack.push(textarea.value);
+    redoStack.push(textArea.value);
     // Revert to last state
     const previousVersion = undoStack.pop();
-    textarea.value = previousVersion;
+    textArea.value = previousVersion;
     // Display counts
     characterCount();
     wordCount();
@@ -72,50 +79,50 @@ function undo() {
 function redo() {
   if (redoStack.length > 0) {
     // Save current version to undo stack
-    undoStack.push(textarea.value);
+    undoStack.push(textArea.value);
     // Reapply the undone version
     const nextVersion = redoStack.pop();
-    textarea.value = nextVersion;
+    textArea.value = nextVersion;
     // Display counts
-    characterCount();
+    charCount();
     wordCount();
     lineCount();
   }
 }
 
 // Count all characters
-function characterCount() {
-  const charCount = textarea.value.length + 1;
+function charCount() {
+  const charCount = textArea.value.length + 1;
   charCountDisplay.textContent = charCount;
 }
 
 // Count all words
 function wordCount() {
-  const wordCount = textarea.value.split(" ").length;
+  const wordCount = textArea.value.split(" ").length;
   wordCountDisplay.textContent = wordCount;
 }
 
 // Count all lines
 function lineCount() {
-  const lineCount = textarea.value.split("\n").length;
+  const lineCount = textArea.value.split("\n").length;
   lineCountDisplay.textContent = lineCount;
 }
 
 // Functional Buttons
 clearBtn.addEventListener("click", clear);
 lowercaseBtn.addEventListener("click", lowercase);
-titleCaseBtn.addEventListener("click", titlecase);
+titleCaseBtn.addEventListener("click", titleCase);
 uppercaseBtn.addEventListener("click", uppercase);
 undoBtn.addEventListener("click", undo);
 redoBtn.addEventListener("click", redo);
 
 // Count Displays
-textarea.addEventListener("input", () => {
-  // Push current version of the textarea into the undoStack to make a copy of it
-  undoStack.push(textarea.value);
+textArea.addEventListener("input", () => {
+  // Push current version of the textArea into the undoStack to make a copy of it
+  undoStack.push(textArea.value);
   // Clear the redoStack because of this new change
   redoStack = [];
-  characterCount();
+  charCount();
   wordCount();
   lineCount();
 });
