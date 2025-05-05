@@ -70,14 +70,14 @@ h1 {
   content: " Clear";
 }
 #clearBtn:hover i {
-  animation: fa-shake 1s infinite;
+  animation: fa-shake 1.5s infinite;
 }
 /* Undo Button Hover Effect */
 #undoBtn:hover::after {
   content: " Undo";
 }
 #undoBtn:hover i {
-  animation: spin-reverse 1s infinite;
+  animation: spin-reverse 1.5s infinite;
 }
 @keyframes spin-reverse {
   0% {
@@ -99,14 +99,14 @@ h1 {
   content: " Copy";
 }
 #copyBtn:hover i {
-  animation: fa-beat 1.5s infinite;
+  animation: fa-beat 1s infinite;
 }
 /* Paste Button Hover Effect */
 #pasteBtn:hover::after {
   content: " Paste";
 }
 #pasteBtn:hover i {
-  animation: fa-beat 1.5s infinite;
+  animation: fa-beat 1s infinite;
 }
 
 /* Counter Display Container */
