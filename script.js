@@ -1,4 +1,3 @@
-// * Variables
 // Text Area
 const textarea = document.getElementById("textarea");
 
@@ -15,7 +14,10 @@ const charCountDisplay = document.getElementById("charCountDisplay");
 const wordCountDisplay = document.getElementById("wordCountDisplay");
 const lineCountDisplay = document.getElementById("lineCountDisplay");
 
-// * Functions
+// Undo and Redo Stack
+let undoStack = [];
+let redoStack = [];
+
 // Clear everything
 function clear() {
   textarea.value = "";
@@ -51,14 +53,40 @@ function uppercase() {
   textarea.value = textarea.value.toUpperCase();
 }
 
-function undo() {}
+// Undo last change
+function undo() {
+  if (undoStack.length > 0) {
+    // Save current version for redo
+    redoStack.push(textarea.value);
+    // Revert to last state
+    const previousVersion = undoStack.pop();
+    textarea.value = previousVersion;
+    // Display counts
+    characterCount();
+    wordCount();
+    lineCount();
+  }
+}
 
-function redo() {}
+// Redo last change
+function redo() {
+  if (redoStack.length > 0) {
+    // Save current version to undo stack
+    undoStack.push(textarea.value);
+    // Reapply the undone version
+    const nextVersion = redoStack.pop();
+    textarea.value = nextVersion;
+    // Display counts
+    characterCount();
+    wordCount();
+    lineCount();
+  }
+}
 
 // Count all characters
 function characterCount() {
-  const characterCount = textarea.value.length + 1;
-  charCountDisplay.textContent = characterCount;
+  const charCount = textarea.value.length + 1;
+  charCountDisplay.textContent = charCount;
 }
 
 // Count all words
@@ -73,7 +101,6 @@ function lineCount() {
   lineCountDisplay.textContent = lineCount;
 }
 
-// * Event Listeners
 // Functional Buttons
 clearBtn.addEventListener("click", clear);
 lowercaseBtn.addEventListener("click", lowercase);
@@ -81,8 +108,13 @@ titlecaseBtn.addEventListener("click", titlecase);
 uppercaseBtn.addEventListener("click", uppercase);
 undoBtn.addEventListener("click", undo);
 redoBtn.addEventListener("click", redo);
+
 // Count Displays
 textarea.addEventListener("input", () => {
+  // Push current version of the textarea into the undoStack to make a copy of it
+  undoStack.push(textarea.value);
+  // Clear the redoStack because of this new change
+  redoStack = [];
   characterCount();
   wordCount();
   lineCount();
