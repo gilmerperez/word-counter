@@ -3,11 +3,9 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
-  padding: 1rem;
   text-align: center;
-  background: radial-gradient(circle, #ffffff 0%, hsl(210, 100%, 65%) 200%);
   font-family: "Montserrat", sans-serif;
+  background: radial-gradient(circle, #ffffff 0%, hsl(210, 100%, 65%) 200%);
 }
 
 main {
@@ -20,7 +18,7 @@ main {
 /* Title */
 h1 {
   font-size: 5rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* Text Area */
@@ -72,10 +70,12 @@ h1 {
 #clearBtn:hover i {
   animation: fa-shake 2s infinite;
 }
+
 /* Undo Button Hover Effect */
 #undoBtn:hover i {
   animation: spin-reverse 1.5s infinite;
 }
+
 @keyframes spin-reverse {
   0% {
     transform: rotate(0deg);
@@ -84,14 +84,17 @@ h1 {
     transform: rotate(-360deg);
   }
 }
+
 /* Redo Button Hover Effect */
 #redoBtn:hover i {
   animation: fa-spin 1.5s infinite;
 }
+
 /* Copy Button Hover Effect */
 #copyBtn:hover i {
   animation: fa-beat 1s infinite;
 }
+
 /* Paste Button Hover Effect */
 #pasteBtn:hover i {
   animation: fa-beat 1s infinite;
@@ -115,7 +118,6 @@ h1 {
   border-radius: 5px;
   background-color: white;
 }
-
 
 @media (max-width: 768px) {
   h1 {
