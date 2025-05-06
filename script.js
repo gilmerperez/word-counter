@@ -227,13 +227,25 @@ async function paste() {
 
 // Count all characters
 function charCount() {
-  const charCount = textArea.value.length + 1;
+  const charCount = textArea.value.length;
   charCountDisplay.textContent = charCount;
 }
 
 // Count all words
 function wordCount() {
-  const wordCount = textArea.value.split(" ").length;
+  let wordCount = 0;
+  // Trim the text for any whitespace
+  const trimmedText = textArea.value.trim();
+  // If there is no text
+  if (trimmedText === "") {
+    // There are no words
+    wordCount = 0;
+    // If there is text
+  } else {
+    // Split by one or more whitespace
+    const words = trimmedText.split(/\s+/);
+    wordCount = words.length;
+  }
   wordCountDisplay.textContent = wordCount;
 }
 
