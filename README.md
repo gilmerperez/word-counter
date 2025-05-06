@@ -19,7 +19,7 @@ The application is fully responsive, ensuring optimal usability on both desktop 
 
 The following image shows the web application's appearance and functionality:
 
-![Word Counter App](./assets/images/word-counter.jpg)
+![Word Counter App](./assets/images/sc.jpg)
 
 ## Instructions
 
