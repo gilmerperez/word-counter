@@ -238,7 +238,6 @@ function wordCount() {
   const trimmedText = textArea.value.trim();
   // If there is no text
   if (trimmedText === "") {
-    // There are no words
     wordCount = 0;
     // If there is text
   } else {
@@ -251,17 +250,36 @@ function wordCount() {
 
 // Count all sentences
 function sentenceCount() {
-  const sentences = textArea.value.match(/[^.!?]+[.!?]+(\s|$)/g);
-  if (sentences) {
-    sentenceCountDisplay.textContent = sentences.length;
+  let sentenceCount = 0;
+  // Trim the text for any whitespace
+  const trimmedText = textArea.value.trim();
+  // If there is no text
+  if (trimmedText === "") {
+    sentenceCount = 0;
+    // If there is text
   } else {
-    sentenceCountDisplay.textContent = 0;
+    // Split them by punctuation marks
+    const sentences = trimmedText.match(/[^\.!\?]+[\.!\?]+/g);
+    if (sentences) {
+      sentenceCount = sentences.length;
+    } else {
+      sentenceCount = 0;
+    }
   }
+  sentenceCountDisplay.textContent = sentenceCount;
 }
 
 // Count all lines
 function lineCount() {
-  const lineCount = textArea.value.split("\n").length;
+  let lineCount = 0;
+  // If there is no text
+  if (textArea.value.trim() === "") {
+    lineCount = 0;
+    // If there is text
+  } else {
+    // Split them by each new line
+    lineCount = textArea.value.split("\n").length;
+  }
   lineCountDisplay.textContent = lineCount;
 }
 
